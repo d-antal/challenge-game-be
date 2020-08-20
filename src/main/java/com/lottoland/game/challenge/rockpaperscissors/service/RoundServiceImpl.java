@@ -23,7 +23,7 @@ public class RoundServiceImpl implements RoundService {
 	private RoundRepository roundRepository;
 
 	@Autowired
-	private GameServiceImpl gameService;
+	private GameService gameService;
 
 	@Override
 	public List<Round> getRounds(Long gameId) {

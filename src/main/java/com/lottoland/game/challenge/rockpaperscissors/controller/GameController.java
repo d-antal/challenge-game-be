@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.lottoland.game.challenge.rockpaperscissors.model.Game;
-import com.lottoland.game.challenge.rockpaperscissors.service.GameServiceImpl;
+import com.lottoland.game.challenge.rockpaperscissors.service.GameService;
 
 
 @CrossOrigin(origins = "http://localhost:4200")
@@ -21,7 +21,7 @@ import com.lottoland.game.challenge.rockpaperscissors.service.GameServiceImpl;
 public class GameController {
 
 	@Autowired
-	private GameServiceImpl gameService;
+	private GameService gameService;
 
 	@ResponseStatus(HttpStatus.CREATED)
 	@PostMapping(path = "/games")

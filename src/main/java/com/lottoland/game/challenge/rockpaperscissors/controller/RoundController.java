@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.lottoland.game.challenge.rockpaperscissors.exception.ResourceNotFoundException;
 import com.lottoland.game.challenge.rockpaperscissors.model.Round;
 import com.lottoland.game.challenge.rockpaperscissors.model.RoundsTotal;
-import com.lottoland.game.challenge.rockpaperscissors.service.RoundServiceImpl;
+import com.lottoland.game.challenge.rockpaperscissors.service.RoundService;
 
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
@@ -26,7 +26,7 @@ import com.lottoland.game.challenge.rockpaperscissors.service.RoundServiceImpl;
 public class RoundController {
 
 	@Autowired
-	private RoundServiceImpl roundService;
+	private RoundService roundService;
 
 	@GetMapping(path = "/games/{gameId}/rounds")
 	public List<Round> getRoundsByGame(@PathVariable(value = "gameId") Long gameId) {
