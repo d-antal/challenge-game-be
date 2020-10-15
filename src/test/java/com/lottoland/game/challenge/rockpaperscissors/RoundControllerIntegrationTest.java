@@ -45,13 +45,13 @@ public class RoundControllerIntegrationTest {
 	private RoundServiceImpl roundService;
 
 	private static final ObjectMapper OM = new ObjectMapper();
-	private static final String URI_ROUNDS = "/api/v1/games/1/rounds";
-	private static final String URI_ROUNDS_TOTAL = "/api/v1/games/rounds/total";
+	private static final String URI_ROUNDS = "/games/1/rounds";
+	private static final String URI_ROUNDS_TOTAL = "/rounds/total";
 	private static final Long GAME_ID = 1L;
 	private static final Round ROUND_1 = new Round(1L, Choose.PAPER, Choose.ROCK, Result.FIRST_PLAYER_WON, null);
 	private static final Round ROUND_2 = new Round(2L, Choose.SCISSORS, Choose.ROCK, Result.SECOND_PLAYER_WON, null);
 	private static final List<Round> ROUND_LIST = Arrays.asList(ROUND_1, ROUND_2);
-	private static final RoundsTotal ROUNDS_TOTAL = new RoundsTotal(1, 1, 1, 3);
+	private static final RoundsTotal ROUNDS_TOTAL = new RoundsTotal(1, 1, 1);
 
 	@Before
 	public void init() {
@@ -98,9 +98,8 @@ public class RoundControllerIntegrationTest {
 				.header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON)).andExpect(status().isOk())
 				.andExpect(jsonPath("$.firstWins", is(ROUNDS_TOTAL.getFirstWins())))
 				.andExpect(jsonPath("$.secondWins", is(ROUNDS_TOTAL.getSecondWins())))
-				.andExpect(jsonPath("$.draws", is(ROUNDS_TOTAL.getDraws())))
-				.andExpect(jsonPath("$.all", is(ROUNDS_TOTAL.getAll())));
-
+				.andExpect(jsonPath("$.draws", is(ROUNDS_TOTAL.getDraws())));
+				
 		verify(roundService, times(1)).getRoundsTotal();
 	}
 

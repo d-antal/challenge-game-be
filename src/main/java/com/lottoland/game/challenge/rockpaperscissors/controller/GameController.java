@@ -17,14 +17,14 @@ import com.lottoland.game.challenge.rockpaperscissors.service.GameService;
 
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
-@RequestMapping("/api/v1")
+@RequestMapping("/games")
 public class GameController {
 
 	@Autowired
 	private GameService gameService;
 
 	@ResponseStatus(HttpStatus.CREATED)
-	@PostMapping(path = "/games")
+	@PostMapping()
 	public Game createGame(@Valid @RequestBody Game game) {	
 		return gameService.createGame(game);
 	}

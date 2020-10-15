@@ -41,7 +41,7 @@ public class RoundControllerTest {
 	private static final Round ROUND = Round.builder().firstPlayerChose(Choose.PAPER).secondPlayerChose(Choose.ROCK)
 			.result(Result.FIRST_PLAYER_WON).build();
 	private static final List<Round> ROUND_LIST = Arrays.asList(ROUND);
-	private static final RoundsTotal ROUNDS_TOTAL = new RoundsTotal(1, 1, 1, 3);
+	private static final RoundsTotal ROUNDS_TOTAL = new RoundsTotal(1, 1, 1);
 
 	@Before
 	public void init() {

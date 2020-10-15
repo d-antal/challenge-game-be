@@ -18,6 +18,5 @@ public class RoundsTotal {
 	private int firstWins;
 	private int secondWins;
 	private int draws;
-	private int all;
 
 }

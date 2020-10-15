@@ -22,7 +22,6 @@ import com.lottoland.game.challenge.rockpaperscissors.service.RoundService;
 
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
-@RequestMapping("/api/v1/")
 public class RoundController {
 
 	@Autowired
@@ -40,7 +39,7 @@ public class RoundController {
 		return roundService.createRound(round, gameId);
 	}
 
-	@GetMapping(path = "/games/rounds/total")
+	@GetMapping(path = "/rounds/total")
 	public RoundsTotal getRoundsTotal() {
 		return roundService.getRoundsTotal();
 	}

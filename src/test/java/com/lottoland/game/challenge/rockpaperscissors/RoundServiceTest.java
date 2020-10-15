@@ -55,18 +55,20 @@ public class RoundServiceTest {
 	private static final List<Round> ROUND_LIST = Arrays.asList(ROUND_FIRST_PLAYER_PAPER, ROUND_FIRST_PLAYER_SCISSORS,
 			ROUND_FIRST_PLAYER_ROCK);
 
-	private Object[] createRoundParams() {
-		return new Object[][] { { ROUND_FIRST_PLAYER_PAPER, Result.FIRST_PLAYER_WON },
-				{ ROUND_FIRST_PLAYER_SCISSORS, Result.SECOND_PLAYER_WON }, { ROUND_FIRST_PLAYER_ROCK, Result.DRAW } };
+	private Object[][] createRoundParams() {
+		return new Object[][] { 
+				{ ROUND_FIRST_PLAYER_PAPER, Result.FIRST_PLAYER_WON },
+				{ ROUND_FIRST_PLAYER_SCISSORS, Result.SECOND_PLAYER_WON }, 
+				{ ROUND_FIRST_PLAYER_ROCK, Result.DRAW } 
+		};
 	}
 
-	private Object[] getRoundsTotalParams() {
+	private Object[][] getRoundsTotalParams() {
 		return new Object[][] {
-				{ Arrays.asList(Result.FIRST_PLAYER_WON, Result.SECOND_PLAYER_WON, Result.DRAW),
-						new RoundsTotal(1, 1, 1, 3) },
-				{ Arrays.asList(Result.FIRST_PLAYER_WON, Result.FIRST_PLAYER_WON, Result.DRAW),
-						new RoundsTotal(2, 0, 1, 3) },
-				{ Arrays.asList(Result.DRAW, Result.DRAW, Result.DRAW), new RoundsTotal(0, 0, 3, 3) } };
+				{ Arrays.asList(Result.FIRST_PLAYER_WON, Result.SECOND_PLAYER_WON, Result.DRAW), new RoundsTotal(1, 1, 1) },
+				{ Arrays.asList(Result.FIRST_PLAYER_WON, Result.FIRST_PLAYER_WON, Result.DRAW),	 new RoundsTotal(2, 0, 1) },
+				{ Arrays.asList(Result.DRAW, Result.DRAW, Result.DRAW), new RoundsTotal(0, 0, 3) } 
+		};
 	}
 
 	@Before

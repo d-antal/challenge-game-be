@@ -1,6 +1,11 @@
 package com.lottoland.game.challenge.rockpaperscissors.service;
 
+import static java.util.stream.Collectors.counting;
+import static java.util.stream.Collectors.groupingBy;
+
+import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 
 import javax.transaction.Transactional;
 
@@ -42,21 +47,18 @@ public class RoundServiceImpl implements RoundService {
 	@Override
 	public RoundsTotal getRoundsTotal() {
 		List<Result> resultList = roundRepository.getResults();
-		int firstWins = 0;
-		int secondWinds = 0;
-		int draws = 0;
 
-		for (Result result : resultList) {
-			if (Result.FIRST_PLAYER_WON.equals(result)) {
-				firstWins++;
-			} else if (Result.SECOND_PLAYER_WON.equals(result)) {
-				secondWinds++;
-			} else {
-				draws++;
+		Map<String, Long> resultMap = resultList.stream().collect(groupingBy(Result::name, counting()));
+
+		Arrays.stream(Result.values()).forEach(result -> {
+			if (!resultMap.containsKey(result.name())) {
+				resultMap.put(result.name(), 0l);
 			}
-		}
+		});
 
-		return new RoundsTotal(firstWins, secondWinds, draws, resultList.size());
+		return new RoundsTotal(resultMap.get(Result.FIRST_PLAYER_WON.name()).intValue(),
+				resultMap.get(Result.SECOND_PLAYER_WON.name()).intValue(),
+				resultMap.get(Result.DRAW.name()).intValue());
 	}
 
 	private Result createResult(Choose firstPlayer, Choose secondPlayer) {

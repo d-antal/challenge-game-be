@@ -39,7 +39,7 @@ public class GameControllerIntegrationTest {
 
 	private static final ObjectMapper OM = new ObjectMapper();
 	private static final Game GAME = Game.builder().id(1L).build();
-	private static final String URI = "/api/v1/games";
+	private static final String URI = "/games";
 
 	@Before
 	public void init() {
